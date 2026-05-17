@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certus PLD — Cumplimiento Normativo Integral para Inmobiliarias</title>
+    <title>Certus PLD — Cumplimiento Normativo para Inmobiliarias</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --navy: #1F3864;
             --gold: #D4944A;
             --black: #0A0A0A;
             --ivory: #F7F3EE;
             --gray: #6B7280;
-            --purple: #7C3AED;
-            --orange: #F59E0B;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+        html, body {
+            width: 100%;
+            height: 100%;
         }
-        
+
         body {
             font-family: 'Source Sans 3', sans-serif;
             color: #333;
             line-height: 1.6;
+            background: white;
         }
-        
+
         /* HEADER */
-        .header {
+        header {
             background: var(--navy);
             padding: 16px 0;
             position: sticky;
@@ -37,7 +41,7 @@
             z-index: 100;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
+
         .header-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -46,26 +50,26 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
         }
-        
-       .logo-shield {
-       width: 40px;
-       height: 40px;
-       background: url(...);
-   }
-        
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
         .logo-text {
             display: flex;
             flex-direction: column;
             line-height: 1.2;
         }
-        
+
         .logo-text strong {
             font-family: 'Playfair Display', serif;
             font-size: 16px;
@@ -73,20 +77,20 @@
             color: var(--gold);
             letter-spacing: 0.05em;
         }
-        
+
         .logo-text small {
             font-size: 10px;
             color: rgba(255,255,255,0.6);
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
-        
+
         .nav {
             display: flex;
             gap: 32px;
             align-items: center;
         }
-        
+
         .nav a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
@@ -94,11 +98,11 @@
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+
         .nav a:hover {
             color: var(--gold);
         }
-        
+
         .cta-header {
             background: var(--gold);
             color: var(--navy);
@@ -108,40 +112,22 @@
             font-weight: 600;
             text-decoration: none;
             transition: background 0.3s;
+            cursor: pointer;
+            border: none;
         }
-        
+
         .cta-header:hover {
             background: #c9934a;
         }
-        
+
         /* HERO */
         .hero {
             background: linear-gradient(135deg, var(--navy) 0%, #0f1f40 100%);
             color: white;
             padding: 80px 40px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(212, 148, 74, 0.05);
-            border-radius: 50%;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
+
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 48px;
@@ -149,14 +135,17 @@
             font-weight: 900;
             line-height: 1.2;
         }
-        
+
         .hero-subtitle {
             font-size: 18px;
             color: rgba(255,255,255,0.9);
             margin-bottom: 32px;
             font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -164,19 +153,22 @@
             margin-top: 48px;
             padding-top: 48px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
         .stat {
             text-align: center;
         }
-        
+
         .stat-number {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
             color: var(--gold);
             font-weight: 700;
         }
-        
+
         .stat-label {
             font-size: 12px;
             color: rgba(255,255,255,0.7);
@@ -184,7 +176,7 @@
             letter-spacing: 0.1em;
             margin-top: 8px;
         }
-        
+
         /* PRODUCTOS */
         .productos {
             max-width: 1200px;
@@ -193,26 +185,27 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .productos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
-        
+
         .producto-card {
             background: white;
             border: 1px solid #e0ddd8;
             padding: 32px 24px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-        
+
         .producto-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
-        
+
         .producto-icon {
             width: 60px;
             height: 60px;
@@ -224,21 +217,21 @@
             justify-content: center;
             font-size: 28px;
         }
-        
+
         .producto-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 18px;
             color: var(--navy);
             margin-bottom: 12px;
         }
-        
+
         .producto-card p {
             font-size: 13px;
             color: var(--gray);
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        
+
         .producto-tag {
             display: inline-block;
             font-size: 10px;
@@ -247,30 +240,17 @@
             border-radius: 12px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-        }
-        
-        .tag-pld {
-            background: #1F3864;
+            background: var(--navy);
             color: var(--gold);
         }
-        
-        .tag-datos {
-            background: #7C3AED;
-            color: white;
-        }
-        
-        .tag-notarial {
-            background: #F59E0B;
-            color: white;
-        }
-        
+
         /* BENEFICIOS */
         .beneficios {
             background: var(--ivory);
             padding: 80px 40px;
             margin-top: 60px;
         }
-        
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 32px;
@@ -280,7 +260,7 @@
             position: relative;
             padding-bottom: 16px;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -292,7 +272,7 @@
             background: var(--gold);
             border-radius: 2px;
         }
-        
+
         .beneficios-grid {
             max-width: 1000px;
             margin: 0 auto;
@@ -300,12 +280,12 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 32px;
         }
-        
+
         .beneficio {
             display: flex;
             gap: 16px;
         }
-        
+
         .beneficio-icon {
             width: 48px;
             height: 48px;
@@ -318,7 +298,7 @@
             font-size: 24px;
             flex-shrink: 0;
         }
-        
+
         .beneficio h4 {
             font-family: 'Poppins', sans-serif;
             font-size: 14px;
@@ -326,13 +306,13 @@
             color: var(--navy);
             margin-bottom: 6px;
         }
-        
+
         .beneficio p {
             font-size: 12px;
             color: var(--gray);
             line-height: 1.5;
         }
-        
+
         /* CTA SECTION */
         .cta-section {
             background: var(--navy);
@@ -340,13 +320,13 @@
             padding: 80px 40px;
             text-align: center;
         }
-        
+
         .cta-section h2 {
             font-family: 'Playfair Display', serif;
             font-size: 36px;
             margin-bottom: 24px;
         }
-        
+
         .cta-section p {
             font-size: 16px;
             color: rgba(255,255,255,0.9);
@@ -355,7 +335,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .cta-button {
             display: inline-block;
             background: var(--gold);
@@ -368,28 +348,24 @@
             transition: background 0.3s, transform 0.3s;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            border: none;
+            cursor: pointer;
         }
-        
+
         .cta-button:hover {
             background: #c9934a;
             transform: translateY(-2px);
         }
-        
-        /* TALLY EMBED */
-        .tally-embed {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
+
         /* FOOTER */
-        .footer {
+        footer {
             background: var(--black);
             color: rgba(255,255,255,0.7);
             padding: 48px 40px;
             text-align: center;
             font-size: 12px;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -399,7 +375,7 @@
             margin-bottom: 32px;
             text-align: left;
         }
-        
+
         .footer-section h4 {
             color: white;
             font-size: 13px;
@@ -408,25 +384,18 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
-        
+
         .footer-section p {
             line-height: 1.8;
             font-size: 11px;
         }
-        
+
         .footer-divider {
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 24px;
+            text-align: center;
         }
-        
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .header-inner {
@@ -434,26 +403,26 @@
                 gap: 20px;
                 padding: 16px 20px;
             }
-            
+
             .nav {
                 flex-direction: column;
                 gap: 12px;
                 width: 100%;
                 text-align: center;
             }
-            
+
             .hero {
                 padding: 60px 20px;
             }
-            
+
             .hero h1 {
                 font-size: 32px;
             }
-            
+
             .productos {
                 padding: 0 20px;
             }
-            
+
             .beneficios, .cta-section {
                 padding: 60px 20px;
             }
@@ -462,10 +431,10 @@
 </head>
 <body>
     <!-- HEADER -->
-    <header class="header">
+    <header>
         <div class="header-inner">
             <a href="#" class="logo">
-                <img src="assets/logo-certus.png" alt="Certus Consultores" class="logo-image">
+                <img src="assets/logo-certus.png" alt="Certus Consultores">
                 <div class="logo-text">
                     <strong>CERTUS</strong>
                     <small>Consultores</small>
@@ -479,144 +448,124 @@
             </nav>
         </div>
     </header>
-    
+
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Certeza Jurídica en Cumplimiento Normativo</h1>
-            <p class="hero-subtitle">Soluciones integrales de cumplimiento PLD/FT, protección de datos y automatización notarial para empresas mexicanas</p>
-            
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">16</div>
-                    <div class="stat-label">Documentos Personalizados</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">90</div>
-                    <div class="stat-label">Días de Implementación</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Cumplimiento Regulatorio</div>
-                </div>
+        <h1>Certeza Jurídica en Cumplimiento Normativo</h1>
+        <p class="hero-subtitle">Soluciones integrales de cumplimiento PLD/FT para inmobiliarias, desarrolladores y arrendadores mexicanos</p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">16</div>
+                <div class="stat-label">Documentos Personalizados</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">90</div>
+                <div class="stat-label">Días de Implementación</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Cumplimiento Regulatorio</div>
             </div>
         </div>
     </section>
-    
+
     <!-- PRODUCTOS -->
     <section class="productos" id="productos">
         <div class="productos-grid">
-            <!-- PLD -->
             <div class="producto-card">
                 <div class="producto-icon">🏛️</div>
                 <h3>Certus PLD</h3>
-                <p>Programa completo de cumplimiento LFPIORPI para inmobiliarias, desarrolladores y arrendadores. Reforma 2025 implementada.</p>
-                <span class="producto-tag tag-pld">Disponible 2026</span>
+                <p>Programa completo de cumplimiento LFPIORPI para inmobiliarias y desarrolladores. Reforma 2025 implementada.</p>
+                <span class="producto-tag">Disponible 2026</span>
             </div>
-            
-            <!-- DATOS -->
+
             <div class="producto-card">
                 <div class="producto-icon">🔒</div>
                 <h3>Certus Datos</h3>
-                <p>Cumplimiento LFPDPPP con protocolos modernos de privacidad y manejo seguro de datos personales en tu organización.</p>
-                <span class="producto-tag tag-datos">2027</span>
+                <p>Cumplimiento LFPDPPP con protocolos modernos de privacidad y manejo seguro de datos personales.</p>
+                <span class="producto-tag">2027</span>
             </div>
-            
-            <!-- NOTARIAL -->
+
             <div class="producto-card">
                 <div class="producto-icon">📜</div>
                 <h3>Certus Notarial</h3>
-                <p>Automatización y cumplimiento normativo para notarías públicas mexicanas. Eficiencia + regulación garantizada.</p>
-                <span class="producto-tag tag-notarial">2028</span>
+                <p>Automatización y cumplimiento normativo para notarías públicas mexicanas. Eficiencia garantizada.</p>
+                <span class="producto-tag">2028</span>
             </div>
         </div>
     </section>
-    
+
     <!-- BENEFICIOS -->
     <section class="beneficios" id="beneficios">
         <h2 class="section-title">¿Por qué Certus PLD?</h2>
-        
+
         <div class="beneficios-grid">
             <div class="beneficio">
                 <div class="beneficio-icon">✓</div>
                 <div>
                     <h4>Implementación Rápida</h4>
-                    <p>Kit completo de 16 documentos personalizados en 90 días. Sin demoras, sin sorpresas.</p>
+                    <p>Kit completo en 90 días. Sin demoras, sin sorpresas.</p>
                 </div>
             </div>
-            
+
             <div class="beneficio">
                 <div class="beneficio-icon">✓</div>
                 <div>
                     <h4>Normativa al Día</h4>
-                    <p>LFPIORPI reforma 2025 + Reglamento 2026. Siempre alineado con regulación vigente.</p>
+                    <p>LFPIORPI reforma 2025 + Reglamento 2026. Siempre actualizado.</p>
                 </div>
             </div>
-            
+
             <div class="beneficio">
                 <div class="beneficio-icon">✓</div>
                 <div>
                     <h4>Soporte Continuo</h4>
-                    <p>Suscripción anual con consultas ad-hoc, auditorías y actualizaciones automáticas.</p>
+                    <p>Suscripción anual con consultas, auditorías y actualizaciones.</p>
                 </div>
             </div>
-            
+
             <div class="beneficio">
                 <div class="beneficio-icon">✓</div>
                 <div>
                     <h4>Certeza Jurídica</h4>
-                    <p>Documentos redactados por abogados especializados en PLD/FT y regulación financiera.</p>
+                    <p>Documentos redactados por abogados especializados en PLD/FT.</p>
                 </div>
             </div>
-            
+
             <div class="beneficio">
                 <div class="beneficio-icon">✓</div>
                 <div>
                     <h4>Reducción de Multas</h4>
-                    <p>Hasta 50% en caso de actuación espontánea. Cumplimiento como estrategia de riesgo.</p>
+                    <p>Hasta 50% con actuación espontánea. Cumplimiento como estrategia.</p>
                 </div>
             </div>
-            
+
             <div class="beneficio">
                 <div class="beneficio-icon">✓</div>
                 <div>
                     <h4>Escalabilidad</h4>
-                    <p>Desde inmobiliarias pequeñas hasta desarrolladores de grande escala. Adaptable a tu modelo.</p>
+                    <p>Desde inmobiliarias pequeñas hasta grandes desarrolladores.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- FORMULARIO / CTA -->
+
+    <!-- CTA -->
     <section class="cta-section" id="contacto">
         <h2>Diagnóstico Gratuito</h2>
         <p>Completa el formulario y recibe un análisis personalizado de tu cumplimiento PLD/FT sin compromiso. Respuesta en 24h.</p>
-        
-        <div class="tally-embed">
-            <!-- Aquí va el embed de Tally —  reemplazar con tu URL de formulario -->
-            <iframe 
-                data-tally-src="https://tally.so/embed/YOUR_FORM_ID" 
-                loading="lazy" 
-                style="width:100%;border:none;margin-top:20px;height:600px;border-radius:4px;display:none;"
-                title="Certus PLD — Diagnóstico Gratuito">
-            </iframe>
-            <script async src="https://app.tally.so/widgets/embed.js"></script>
-            
-            <!-- FALLBACK: botón simple si Tally no carga -->
-            <a href="mailto:contacto@certusconsultores.com.mx?subject=Solicitud%20de%20Diagnóstico%20Certus%20PLD" class="cta-button">
-                Solicitar Diagnóstico
-            </a>
-        </div>
+        <a href="mailto:contacto@certusconsultores.com.mx?subject=Solicitud%20de%20Diagnóstico%20Certus%20PLD" class="cta-button">Solicitar Diagnóstico</a>
     </section>
-    
+
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Certus Consultores</h4>
                 <p>Soluciones de Cumplimiento Normativo Integral para empresas mexicanas.</p>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Contacto</h4>
                 <p>
@@ -625,7 +574,7 @@
                     📍 Mérida, Yucatán
                 </p>
             </div>
-            
+
             <div class="footer-section">
                 <h4>Enlaces</h4>
                 <p>
@@ -635,12 +584,9 @@
                 </p>
             </div>
         </div>
-        
+
         <div class="footer-divider">
-            <div class="footer-bottom">
-                <span>&copy; 2026 Certus Consultores. Todos los derechos reservados.</span>
-                <span>Diseño BJ | Desarrollo Técnico</span>
-            </div>
+            <p>&copy; 2026 Certus Consultores. Todos los derechos reservados. | Diseño BJ | Desarrollo Técnico</p>
         </div>
     </footer>
 </body>
